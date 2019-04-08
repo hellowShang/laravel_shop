@@ -56,7 +56,7 @@
       <div class="clearfix"></div>
      </div><!--zhaieq/-->
      <div class="proinfoList">
-      <img src="{{$path}}/{{$info->goods_img}}" width="636" height="822" />
+      <img src="/uploads/goodsimgs/{{$info->goods_img}}" width="636" height="822" />
      </div><!--proinfoList/-->
      <div class="proinfoList">
       暂无信息....

@@ -24,7 +24,7 @@
         <td width="35%" align="right"><div class="qingqu"><a href="javascript:;" class="orange" goods_id = "{{$v->goods_id}}"><font class="del">取消收藏</font></a></div></td>
        </tr>
        <tr>
-        <td class="dingimg" width="15%"><img src="{{$path}}/{{$v->goods_img}}" /></td>
+        <td class="dingimg" width="15%"><img src="/uploads/goodsimgs/{{$v->goods_img}}" /></td>
         <td width="50%">
          <h3>{{$v->goods_name}}</h3>
         </td>

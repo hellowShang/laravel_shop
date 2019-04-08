@@ -33,7 +33,7 @@
       <table>
        <tr goods_id="{{$v->goods_id}}">
         <td width="4%"><input class="box" type="checkbox" name="1" /></td>
-        <td class="dingimg" width="15%"><img src="{{$path}}/{{$v->goods_img}}" /></td>
+        <td class="dingimg" width="15%"><img src="/uploads/goodsimgs/{{$v->goods_img}}" /></td>
         <td width="50%">
          <h3>{{$v->goods_name}}</h3>
          <time>加入购物车时间：{{date('Y-m-d H:i:s',$v->update_time)}}</time>

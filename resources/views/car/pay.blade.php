@@ -68,7 +68,7 @@
        </tr>
        @foreach($cartInfo as $k=>$v)
        <tr class="goods_id" goods_id="{{$v->goods_id}}">
-        <td class="dingimg" width="15%"><img src="{{$path}}/{{$v->goods_img}}" /></td>
+        <td class="dingimg" width="15%"><img src="/uploads/goodsimgs/{{$v->goods_img}}" /></td>
         <td width="50%">
          <h3>{{$v->goods_name}}</h3>
          <time>下单时间：{{date('Y-m-d H:i:s',time())}}</time>
