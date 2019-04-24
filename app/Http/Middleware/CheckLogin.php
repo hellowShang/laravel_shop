@@ -17,7 +17,7 @@ class CheckLogin
     {
 //         防非法登录的验证
         if(!session('user_name')){
-            return redirect()->to('http://vm.001.com/login/login');
+            return redirect()->to('/login/login');
         }
         return $next($request);
     }
