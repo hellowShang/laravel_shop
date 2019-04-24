@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Log;
 class CarController extends Controller
@@ -349,7 +349,11 @@ class CarController extends Controller
         return view('car.success',['orderInfo' => $orderInfo]);
     }
 
-    //  支付
+    /**
+     * 支付宝支付
+     * @param $order_no
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|void
+     */
     public function alipay($order_no){
 //        $order_no = '';
         if(!$order_no){
@@ -397,7 +401,10 @@ class CarController extends Controller
         }
     }
 
-    // 支付成功同步返回信息
+    /**
+     * 支付宝支付成功同步返回信息
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public  function returnpay(){
 
 //        dump($_GET);die;
@@ -419,7 +426,9 @@ class CarController extends Controller
         }
     }
 
-    // 支付成功异步修改数据
+    /**
+     * 支付宝支付成功异步修改数据
+     */
     public function notifypay(){
         require_once app_path('alipay/wappay/service/AlipayTradeService.php');
 
@@ -471,8 +480,27 @@ class CarController extends Controller
         }
     }
 
-    // 支付成功提示
+    /**
+     * 支付成功提示
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function paymessage(){
         return view('car.paymessage');
+    }
+
+    /**
+     * 删除订单
+     */
+    public function orderDel(){
+        $time = time();
+        $arr = DB::table('shop_order')->where('pay_status',1)->get();
+        // dd($arr);
+        foreach($arr as $k=>$v){
+            // 半小时不支付删除
+            if($time - $v->create_time > 1800){
+                // 删除订单
+                DB::table('shop_order')->where(['order_id'=>$v->order_id])->update(['status'=>2]);
+            }
+        }
     }
 }

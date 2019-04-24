@@ -82,3 +82,6 @@ Route::any('/car/paymessage','CarController@paymessage')->middleware('login');
 Route::any('/melt/joinmelt','MeltController@joinmelt');
 // 分销
 Route::any('/melt/melt','MeltController@melt')->middleware('login');
+
+// 计划任务    半小时后没有支付的订单删除
+Route::get('/car/orderdel','CarController@orderDel');
